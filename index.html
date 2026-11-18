@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WithEase">
+<meta name="theme-color" content="#FBF4EC">
+<title>WithEase</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--cream:#FBF4EC;--blush:#F2C9D0;--wine:#6E1F36;--sage:#B5C4AA;--lav:#D3C8E8;--butter:#F6E4A6;--ink:#3A2230;--mute:#8A6E78;--r:26px;
+--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',-apple-system,system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 var(--sans)}
+body{padding:env(safe-area-inset-top) 0 calc(96px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.15}
+h1{font-size:2.3rem}h2{font-size:1.5rem}h3{font-size:1.1rem;font-weight:600}
+main{padding:18px 18px 0;animation:in .5s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.hero{position:relative;overflow:hidden;border-radius:40px 40px 40px 120px;padding:28px 24px 30px;background:linear-gradient(150deg,var(--blush),var(--lav));margin-bottom:18px}
+.hero:before{content:"";position:absolute;right:-50px;top:-60px;width:190px;height:190px;border-radius:58% 42% 55% 45%;background:var(--butter);opacity:.75}
+.hero:after{content:"";position:absolute;right:40px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:var(--sage);opacity:.6}
+.hero>*{position:relative;z-index:1}.hero small{color:var(--wine);font-weight:500}
+.hero p{margin:10px 0 0;font-family:var(--serif);font-style:italic;color:var(--wine);max-width:85%}
+.goal{background:var(--wine);color:#FFF1EC;border-radius:var(--r) var(--r) var(--r) 8px;padding:22px;margin-bottom:18px}
+.goal small{opacity:.75}.goal h2{margin:6px 0 4px}
+.card{background:#fff;border-radius:var(--r);padding:18px;margin-bottom:16px;box-shadow:0 6px 24px rgba(110,31,54,.07)}
+.card.sage{background:var(--sage)}.card.lav{background:var(--lav)}.card.but{background:var(--butter)}.card.bl{background:var(--blush)}
+.card.sage,.card.lav,.card.but,.card.bl{box-shadow:none}
+.card.alt{border-radius:var(--r) 8px var(--r) var(--r)}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.row{display:flex;align-items:center;gap:12px;padding:9px 0}
+.row span{flex:1}.row .done{text-decoration:line-through;opacity:.5}
+.ck{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--wine);background:transparent;padding:0;transition:.2s}
+.ck.on{background:var(--wine);box-shadow:inset 0 0 0 4px var(--cream)}
+.ed,.lnk{background:none;border:0;color:var(--mute);font:inherit;font-size:.9rem;padding:4px 6px;cursor:pointer}
+.add{background:none;border:1.5px dashed var(--wine);color:var(--wine);border-radius:99px;padding:8px 16px;font:inherit;font-size:.9rem;margin-top:6px}
+.btn{background:var(--wine);color:#fff;border:0;border-radius:99px;padding:11px 20px;font:inherit;font-weight:500}
+.btn.o{background:transparent;color:var(--wine);border:1.5px solid var(--wine)}
+.pr{display:flex;gap:8px;flex-wrap:wrap}
+.pill{flex:1;min-width:58px;border:0;border-radius:99px;padding:11px 4px;background:rgba(255,255,255,.7);font:inherit;font-size:.85rem;color:var(--ink)}
+.pill.on{background:var(--wine);color:#fff}
+.cups{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cup{width:28px;height:36px;border-radius:6px 6px 14px 14px;border:2px solid var(--wine);background:transparent;padding:0}
+.cup.on{background:linear-gradient(var(--lav) 0,var(--lav) 100%)}
+textarea,input[type=text]{width:100%;border:1.5px solid rgba(110,31,54,.2);border-radius:18px;padding:12px 14px;font:inherit;background:var(--cream);color:var(--ink);resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--wine);outline-offset:1px}
+details{border-top:1px solid rgba(110,31,54,.12);padding:10px 0}details:first-of-type{border-top:0}
+summary{cursor:pointer;font-family:var(--serif);font-size:1.1rem;list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--wine)}details[open] summary:after{content:"–"}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:10px 0}
+.day{border:0;border-radius:18px;padding:10px 0;background:#fff;font:inherit;font-size:.78rem;color:var(--ink);text-align:center}
+.day b{display:block;font-size:1.05rem;font-family:var(--serif)}
+.day.wo{background:var(--sage)}.day.dn{background:var(--wine);color:#fff}.day.now{outline:2px solid var(--wine)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{display:flex;flex-direction:column;justify-content:flex-end;min-height:150px;border-radius:30px 30px 30px 8px;padding:14px;text-decoration:none;color:var(--ink)}
+.tile:nth-child(3n+2){border-radius:8px 30px 30px 30px;min-height:190px}
+.tile b{font-family:var(--serif);font-size:1.15rem;font-weight:400}.tile span{font-size:.8rem;opacity:.75}
+.moods{display:flex;justify-content:space-between}.moods button{font-size:1.7rem;background:none;border:2px solid transparent;border-radius:50%;padding:6px}
+.moods .on{border-color:var(--wine);background:#fff}
+.prog{height:10px;border-radius:9px;background:rgba(110,31,54,.12);overflow:hidden;margin:6px 0 12px}.prog i{display:block;height:100%;background:var(--wine);border-radius:9px;transition:width .4s}
+.tag{display:inline-block;background:var(--butter);border-radius:99px;padding:2px 12px;font-size:.78rem}
+ol,ul.pl{padding-left:20px;margin:6px 0}ol li,ul.pl li{margin:4px 0}
+nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:min(540px,calc(100% - 24px));display:flex;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-radius:99px;padding:6px;box-shadow:0 10px 30px rgba(110,31,54,.18)}
+nav button{flex:1;border:0;background:none;border-radius:99px;padding:8px 0;font:inherit;font-size:.72rem;color:var(--mute)}
+nav button i{display:block;font-style:normal;font-size:1.2rem}
+nav button.on{background:var(--wine);color:#fff}
+.m{color:var(--mute);font-size:.88rem}
+</style></head>
+<body>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script>
+const K='withease.v1';
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const mon=d=>{const x=new Date(d);x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DEF=()=>({routine:['Wake up, make your bed','Morning light and a slow coffee','Evening wind-down, phone away'],
+supps:[],hair:['Wash and deep condition','Detangle and style','Wrap or protect for the week'],
+prep:['Cook protein for the week','Portion bowls and snacks','Wash and chop produce'],
+tj:['Halal-certified chicken (check the label)','Salmon fillets','Greek yogurt','Rolled oats'],aldi:['Eggs','Cucumbers and tomatoes','Rice','Lemons'],
+appts:['Book your overdue physical','Review supplements with your care team'],
+fin:['Make a plan for the credit card balance','Track spending once a week (5 minutes)','Rebuild a starter savings cushion','Pause impulse purchases for 48 hours'],
+biz:['Get your EIN','Decide on an LLC','Choose a brand name and look','Source your first pieces','Set up Shopify','Shoot product photos','Plan your launch'],
+recipes:[
+{n:'Halal chicken bowl',tag:'Meal prep',ing:['1 lb halal-certified chicken thighs','1 cup rice','1 cucumber','Cherry tomatoes','Greek yogurt','Lemon','Olive oil, salt, cumin, garlic powder'],steps:['Toss chicken with oil, cumin, garlic powder and salt.','Bake at 425°F for 22 minutes until 165°F inside.','Cook rice and chop the cucumber and tomatoes.','Stir lemon into yogurt for a quick sauce.','Fill 4 containers: rice, sliced chicken, veg, sauce on the side.']},
+{n:'Berry protein overnight oats',tag:'Breakfast',ing:['1/2 cup rolled oats','1/2 cup Greek yogurt','1/2 cup milk','1 tbsp chia seeds','Frozen berries','Honey'],steps:['Stir oats, yogurt, milk and chia in a jar.','Top with berries and a little honey.','Refrigerate overnight and eat cold.']},
+{n:'Lemon-herb salmon and greens',tag:'Dinner',ing:['2 salmon fillets','1 lemon','Garlic','Olive oil','Salad greens','Parsley or dill'],steps:['Heat the oven to 400°F.','Rub salmon with oil, garlic, lemon juice and salt.','Bake 12 to 15 minutes until it flakes.','Serve over greens with extra lemon.']},
+{n:'Mediterranean pasta salad',tag:'Lunch',ing:['8 oz pasta','Cucumber','Cherry tomatoes','Olives','Feta','Halal-certified chicken or chickpeas','Olive oil and red wine vinegar'],steps:['Cook pasta, rinse under cold water.','Chop cucumber, tomatoes and olives.','Toss everything with oil, vinegar, salt and oregano.','Chill; it keeps 3 to 4 days.']}],
+wo:[0,2,4,5],waterGoal:8,days:{},wk:{},journal:[],done:{},meals:{},finNote:'',tab:'today'});
+let S;try{S=Object.assign(DEF(),JSON.parse(localStorage.getItem(K)||'{}'))}catch(e){S=DEF()}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const TD=()=>iso(new Date());
+const day=(d=TD())=>S.days[d]||(S.days[d]={p:{},done:{},w:0,goals:['','',''],wo:0,mood:0,ref:''});
+const WK=()=>mon(new Date());
+const wk=()=>{const k=iso(WK());if(!S.wk[k]){const prev=Object.keys(S.wk).sort().pop();S.wk[k]={goal:prev?S.wk[prev].goal:'',int:prev?S.wk[prev].int:'',tasks:[],done:{},ref:''}}return S.wk[k]};
+const ref=k=>{const D=day();
+ if(['routine','supps','hair','prep'].includes(k))return[S[k],D.done[k]=D.done[k]||{}];
+ if(k==='goals')return[D.goals,D.done.goals=D.done.goals||{}];
+ if(k==='tasks'){const W=wk();return[W.tasks,W.done]}
+ return[S[k],S.done[k]=S.done[k]||{}]};
+const rows=(k,empty)=>{const[a,st]=ref(k);return(a.length?a:[]).map((x,i)=>`<div class=row><button class="ck ${st[i]?'on':''}" data-a=tog data-k=${k} data-i=${i} aria-label="Check off"></button><span class="${st[i]?'done':''}">${x?esc(x):'<i class=m>Tap ✎ to set</i>'}</span><button class=ed data-a=ed data-k=${k} data-i=${i} aria-label="Edit">✎</button></div>`).join('')||`<p class=m>${empty||'Nothing here yet.'}</p>`+(k==='goals'?'':'')};
+const addb=(k,l)=>k==='goals'?'':`<button class=add data-a=add data-k=${k}>+ ${l||'Add'}</button>`;
+const pct=(k)=>{const[a,st]=ref(k);const n=a.filter(x=>x).length;return n?Math.round(a.filter((x,i)=>x&&st[i]).length/n*100):0};
+const pin=q=>'https://www.pinterest.com/search/pins/?q='+encodeURIComponent(q);
+const MSG=['Small and steady beats big and burnt out.','You don’t have to do it all. Just do the next kind thing.','Consistency over perfection, always.','Your pace is the right pace.','Show up gently. That counts.','Rest is part of the plan.','You are becoming her, one day at a time.'];
+const PR=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+const MD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const hello=()=>{const h=new Date().getHours();return h<12?'Good morning':h<17?'Good afternoon':'Good evening'};
+const PROMPTS=['What is one small way I can be kind to myself today?','Where did I feel close to Allah this week?','What am I proud of that no one saw?','What boundary would make my week feel lighter?','What do I want less of, and what do I want more of?'];
+let jm=0;
+
+function today(){const D=day(),W=wk(),dt=new Date(),wd=(dt.getDay()+6)%7,isWo=S.wo.includes(wd),M=S.meals[TD()]||{};
+ const np=PR.filter((x,i)=>D.p[i]).length;
+ const slot=(k,l)=>`<div class=row><b style="width:84px;font-weight:500">${l}</b><span>${M[k]?esc(M[k]):'<i class=m>Choose a meal</i>'}</span><button class=ed data-a=meal data-k=${k}>✎</button></div>`;
+ return `<section class=hero><small>${dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}</small><h1>${hello()}, Yusra</h1><p>${MSG[dt.getDay()]}</p></section>
+<section class=goal><small>This week’s focus</small><h2>${W.goal?esc(W.goal):'Choose one thing to focus on'}</h2><small>${W.int?esc(W.int):'Add a weekly intention in This Week'}</small></section>
+<section class=card><div class=hd><h2>Today’s three</h2><span class=m>${pct('goals')}%</span></div>${rows('goals')}</section>
+<section class="card sage"><div class=hd><h2>Prayers</h2><span>${np}/5</span></div><div class=pr>${PR.map((x,i)=>`<button class="pill ${D.p[i]?'on':''}" data-a=pray data-i=${i}>${x}</button>`).join('')}</div></section>
+<section class="card but"><div class=hd><h3>${isWo?'Workout day':'Rest day'}</h3><button class="btn o" data-a=wodone>${D.wo?'Done ✓':'Mark done'}</button></div><p class=m style="margin:0">${isWo?'Move for 30 to 45 minutes. Pilates, gym or a walk all count.':'Stretch, walk and let your body recover.'}</p></section>
+<section class="card lav"><div class=hd><h3>Water</h3><span>${D.w}/${S.waterGoal}</span></div><div class=cups>${Array.from({length:S.waterGoal},(_,i)=>`<button class="cup ${i<D.w?'on':''}" data-a=water data-i=${i} aria-label="Cup ${i+1}"></button>`).join('')}</div></section>
+<section class=card><details><summary>Daily routine</summary>${rows('routine')}${addb('routine','Add habit')}</details>
+<details><summary>Supplements</summary>${rows('supps','Add the supplements your care team recommends.')}${addb('supps','Add supplement')}</details>
+<details><summary>Meals</summary>${slot('b','Breakfast')}${slot('l','Lunch')}${slot('d','Dinner')}</details>
+${dt.getDay()===0?`<details open><summary>Sunday reset</summary><p class=m>Hair day</p>${rows('hair')}${addb('hair')}<p class=m>Meal prep</p>${rows('prep')}${addb('prep')}</details>`:''}</section>
+<section class="card bl alt"><h3>Evening reflection</h3><p class=m>How did today go, really?</p><textarea rows=3 data-f=dref placeholder="Write a line or two">${esc(D.ref)}</textarea></section>`}
+
+function week(){const W=wk(),m=WK(),td=TD();
+ const days=[...Array(7)].map((_,i)=>{const d=new Date(m);d.setDate(d.getDate()+i);return[d,iso(d),i]});
+ const wos=days.filter(([,,i])=>S.wo.includes(i)),wdn=wos.filter(([,k])=>(S.days[k]||{}).wo).length;
+ const pr=days.reduce((a,[,k])=>a+Object.values((S.days[k]||{}).p||{}).filter(Boolean).length,0);
+ return `<h1 style="margin:8px 0 16px">This week</h1>
+<section class=goal><small>One main goal</small><h2>${W.goal?esc(W.goal):'What matters most this week?'}</h2><button class="btn o" style="color:#fff;border-color:#fff" data-a=setgoal>Change goal</button></section>
+<section class=card><h3>Intention</h3><input type=text data-f=wint value="${esc(W.int)}" placeholder="e.g. Move gently, finish what I start"></section>
+<section class=card><h3>Your week</h3><p class=m>Tap a day to switch it between workout and rest.</p><div class=strip>${days.map(([d,k,i])=>`<button class="day ${S.wo.includes(i)?'wo':''} ${(S.days[k]||{}).wo?'dn':''} ${k===td?'now':''}" data-a=wday data-i=${i}>${'MTWTFSS'[i]}<b>${d.getDate()}</b>${i===6?'✿':''}</button>`).join('')}</div><p class=m style="margin:0">Sunday is hair care and meal prep.</p></section>
+<section class=card><div class=hd><h3>Important tasks</h3></div>${rows('tasks','Pick two or three. Finances, health, business or life.')}${addb('tasks','Add task')}</section>
+<section class="card sage"><h3>Progress</h3><p class=m style="margin:0">Workouts ${wdn}/${wos.length}</p><div class=prog><i style="width:${wos.length?wdn/wos.length*100:0}%"></i></div><p class=m style="margin:0">Prayers ${pr}/35</p><div class=prog><i style="width:${pr/35*100}%"></i></div><p class=m style="margin:0">Tasks ${pct('tasks')}%</p><div class=prog><i style="width:${pct('tasks')}%"></i></div></section>
+<section class="card bl"><h3>End-of-week reflection</h3><p class=m>What went well? What will you soften next week?</p><textarea rows=4 data-f=wref>${esc(W.ref)}</textarea></section>`}
+
+function well(){return `<h1 style="margin:8px 0 16px">Wellness</h1>
+<section class="card but"><h3>Workouts</h3><p class=m>Your days: ${S.wo.slice().sort().map(i=>['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]).join(', ')||'none yet'}. Change them in This Week.</p><a class=lnk href="${pin('pilates workout aesthetic')}" target=_blank rel=noopener>Pilates inspiration</a></section>
+<h2 style="margin:20px 0 10px">Halal recipes</h2>
+${S.recipes.map((r,i)=>`<section class="card ${['sage','lav','bl','but'][i%4]}"><details><summary>${esc(r.n)}</summary><span class=tag>${esc(r.tag)}</span><h3 style="margin-top:12px">Ingredients</h3><ul class=pl>${r.ing.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h3>Steps</h3><ol>${r.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
+<button class="btn o" data-a=rgroc data-i=${i}>Add to grocery list</button> <button class=ed data-a=redit data-i=${i}>Edit</button><button class=ed data-a=rdel data-i=${i}>Delete</button></details></section>`).join('')}
+<button class=add data-a=radd>+ New recipe</button>
+<p class=m>Always check for a halal certification on the package.</p>
+<h2 style="margin:20px 0 10px">Groceries</h2>
+<section class=card><h3>Trader Joe’s</h3>${rows('tj')}${addb('tj')}</section>
+<section class=card><h3>Aldi</h3>${rows('aldi')}${addb('aldi')}<br><button class=lnk data-a=clear>Clear checked items</button></section>
+<section class=card><h3>Supplements</h3><p class=m>Match these to your bariatric team’s plan.</p>${rows('supps','No supplements yet.')}${addb('supps','Add supplement')}</section>
+<section class=card><h3>Health appointments</h3>${rows('appts')}${addb('appts','Add reminder')}</section>
+<section class="card lav"><h3>Sunday hair care</h3>${rows('hair')}${addb('hair')}</section>`}
+
+const VT=[['Closer to Allah','Prayer, Quran, dhikr','muslim prayer aesthetic quran morning','#F2C9D0'],['Financial freedom','Debt-free and steady','financial freedom aesthetic vision board','#B5C4AA'],['My jewelry brand','From idea to launch','jewelry brand aesthetic shopify','#F6E4A6'],['Health and confidence','Strong, soft, nourished','pilates girl wellness aesthetic','#D3C8E8'],['Travel','Places I will see','travel photography aesthetic fuji','#F6E4A6'],['Content and creativity','Fujifilm days','fujifilm x-t50 photography aesthetic','#F2C9D0'],['Friendship and community','Warm, real connection','girls brunch friendship aesthetic','#D3C8E8'],['Growth','Boundaries and peace','soft life journaling aesthetic','#B5C4AA']];
+function vision(){return `<h1 style="margin:8px 0 6px">Vision</h1><p class=m style="margin:0 0 16px">The woman you’re becoming. Tap a tile to browse Pinterest.</p>
+<div class=tiles>${VT.map(v=>`<a class=tile style="background:linear-gradient(160deg,${v[3]},#fff8)" href="${pin(v[2])}" target=_blank rel=noopener><b>${v[0]}</b><span>${v[1]}</span></a>`).join('')}</div>
+<section class=card style="margin-top:18px"><details><summary>Money goals</summary>${rows('fin')}${addb('fin','Add money goal')}<p class=m>Notes (kept on this device only)</p><textarea rows=3 data-f=fin>${esc(S.finNote)}</textarea></details>
+<details><summary>Jewelry business milestones</summary>${rows('biz')}${addb('biz','Add milestone')}</details></section>
+<section class="card bl"><h3>Your data</h3><p class=m>Everything stays in this browser. Back it up now and then.</p><button class=btn data-a=exp>Export backup</button> <button class="btn o" data-a=imp>Import backup</button><input type=file id=file accept=".json,application/json" hidden></section>`}
+
+function journal(){const M=['😔','😕','😐','🙂','😊'];
+ return `<h1 style="margin:8px 0 16px">Journal</h1>
+<section class="card lav"><h3>How are you feeling?</h3><div class=moods>${M.map((m,i)=>`<button class="${jm===i+1?'on':''}" data-a=mood data-i=${i+1}>${m}</button>`).join('')}</div></section>
+<section class=card><p class=m id=jp style="font-family:var(--serif);font-style:italic">${PROMPTS[new Date().getDay()%PROMPTS.length]}</p><button class=lnk data-a=np>Another prompt</button>
+<textarea rows=6 id=jt placeholder="Write freely"></textarea><br><br><input type=text id=jg placeholder="Three things I’m grateful for"><br><br><button class=btn data-a=jsave>Save entry</button></section>
+<h2 style="margin:20px 0 10px">Past entries</h2>${S.journal.length?S.journal.map((e,i)=>`<section class=card><div class=hd><span class=m>${new Date(e.d).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} ${e.m?M[e.m-1]:''}</span><button class=ed data-a=jdel data-i=${i}>Delete</button></div><p style="margin:0;white-space:pre-wrap">${esc(e.t)}</p>${e.g?`<p class=m>Grateful: ${esc(e.g)}</p>`:''}</section>`).join(''):'<p class=m>Your entries will gather here.</p>'}`}
+
+const TABS=[['today','☀','Today',today],['week','▦','Week',week],['well','✿','Wellness',well],['vision','✦','Vision',vision],['journal','✎','Journal',journal]];
+function render(keep){const y=scrollY;const t=TABS.find(x=>x[0]===S.tab)||TABS[0];
+ $('#app').innerHTML=t[3]();$('#nav').innerHTML=TABS.map(x=>`<button class="${x[0]===t[0]?'on':''}" data-a=tab data-k=${x[0]}><i>${x[1]}</i>${x[2]}</button>`).join('');
+ if(keep)scrollTo(0,y);save()}
+const $=s=>document.querySelector(s);
+
+const parseRecipe=(r)=>{const n=prompt('Recipe name',r?r.n:'');if(!n)return null;
+ const ing=prompt('Ingredients, separated by commas',r?r.ing.join(', '):'');if(ing===null)return null;
+ const st=prompt('Steps, separated by semicolons',r?r.steps.join('; '):'');if(st===null)return null;
+ return{n,tag:r?r.tag:'My recipe',ing:ing.split(',').map(x=>x.trim()).filter(Boolean),steps:st.split(';').map(x=>x.trim()).filter(Boolean)}};
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;
+ const a=b.dataset.a,k=b.dataset.k,i=+b.dataset.i,D=day(),W=wk();
+ if(a==='tab'){S.tab=k;scrollTo(0,0);return render()}
+ if(a==='tog'){const st=ref(k)[1];st[i]=!st[i]}
+ else if(a==='add'){const t=prompt('Add');if(t&&t.trim())ref(k)[0].push(t.trim())}
+ else if(a==='ed'){const arr=ref(k)[0],t=prompt('Edit (leave empty to remove)',arr[i]);if(t===null)return;
+  if(!t.trim()&&k!=='goals'){arr.splice(i,1);const st=ref(k)[1];Object.keys(st).forEach(x=>delete st[x])}else arr[i]=t.trim()}
+ else if(a==='pray')D.p[i]=!D.p[i];
+ else if(a==='water')D.w=D.w===i+1?i:i+1;
+ else if(a==='wodone')D.wo=D.wo?0:1;
+ else if(a==='setgoal'){const t=prompt('Your one main goal this week',W.goal);if(t===null)return;W.goal=t.trim()}
+ else if(a==='wday'){const j=S.wo.indexOf(i);j<0?S.wo.push(i):S.wo.splice(j,1)}
+ else if(a==='meal'){const nm=S.recipes.map((r,x)=>(x+1)+'. '+r.n).join('\n');const t=prompt('Pick a number or type your own meal:\n'+nm);if(t===null)return;
+  const r=S.recipes[+t-1];(S.meals[TD()]=S.meals[TD()]||{})[k]=r?r.n:t.trim()}
+ else if(a==='radd'){const r=parseRecipe();if(r)S.recipes.push(r)}
+ else if(a==='redit'){const r=parseRecipe(S.recipes[i]);if(r)S.recipes[i]=r}
+ else if(a==='rdel'){if(confirm('Delete this recipe?'))S.recipes.splice(i,1)}
+ else if(a==='rgroc'){const t=prompt('Add ingredients to which list? Type 1 for Trader Joe’s or 2 for Aldi','1');if(t===null)return;
+  S[t==='2'?'aldi':'tj'].push(...S.recipes[i].ing)}
+ else if(a==='clear'){['tj','aldi'].forEach(l=>{S[l]=S[l].filter((x,j)=>!(S.done[l]||{})[j]);S.done[l]={}})}
+ else if(a==='mood'){jm=i}
+ else if(a==='np'){const p=$('#jp');p.textContent=PROMPTS[Math.floor(Math.random()*PROMPTS.length)];return}
+ else if(a==='jsave'){const t=$('#jt').value.trim(),g=$('#jg').value.trim();if(!t&&!g)return alert('Write something first.');
+  S.journal.unshift({d:new Date().toISOString(),m:jm,t,g});jm=0}
+ else if(a==='jdel'){if(confirm('Delete this entry?'))S.journal.splice(i,1)}
+ else if(a==='exp'){const bl=new Blob([JSON.stringify(S)],{type:'application/json'});const u=document.createElement('a');u.href=URL.createObjectURL(bl);u.download='withease-backup-'+TD()+'.json';u.click();return}
+ else if(a==='imp'){$('#file').click();return}
+ render(a!=='jsave')});
+
+document.addEventListener('change',e=>{const f=e.target.dataset&&e.target.dataset.f,v=e.target.value;
+ if(e.target.id==='file'){const r=new FileReader();r.onload=()=>{try{S=Object.assign(DEF(),JSON.parse(r.result));render();alert('Backup restored.')}catch(x){alert('That file couldn’t be read.')}};r.readAsText(e.target.files[0]);return}
+ if(!f)return;if(f==='dref')day().ref=v;if(f==='wint')wk().int=v;if(f==='wref')wk().ref=v;if(f==='fin')S.finNote=v;save()});
+render();
+</script></body></html>
